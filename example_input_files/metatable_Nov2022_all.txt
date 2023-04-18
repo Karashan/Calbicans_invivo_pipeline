@@ -1,0 +1,19 @@
+replicate	dataset	group	UP	DN	orf19_column	feature_column	common_column	plate_column	plate_subset	dominating_cutoff	correlation_cutoff	Note1	Note2
+inoculum	November_sequencing_GI.txt	GI_D05	GI INOC UP	GI INOC DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-1_S1_L001_UP	pool-1_S1_L001_DN
+M1	November_sequencing_GI.txt	GI_D05	GI D5 M1 UP	GI D5 M1 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-2_S5_L001_UP	pool-2_S5_L001_DN
+M2	November_sequencing_GI.txt	GI_D05	GI D5 M2 UP	GI D5 M2 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-3_S6_L001_UP	pool-3_S6_L001_DN
+M3	November_sequencing_GI.txt	GI_D05	GI D5 M3 UP	GI D5 M3 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-4_S2_L001_UP	pool-4_S2_L001_DN
+M4	November_sequencing_GI.txt	GI_D05	GI D5 M4 UP	GI D5 M4 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-5_S3_L001_UP	pool-5_S3_L001_DN
+M5	November_sequencing_GI.txt	GI_D05	GI D5 M5 UP	GI D5 M5 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-6_S4_L001_UP	pool-6_S4_L001_DN
+inoculum	November_sequencing_GI.txt	GI_D10	GI INOC UP	GI INOC DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-1_S1_L001_UP	pool-1_S1_L001_DN
+M1	November_sequencing_GI.txt	GI_D10	GI D10 M1 UP	GI D10 M1 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-7_S5_L001_UP	pool-7_S5_L001_DN
+M2	November_sequencing_GI.txt	GI_D10	GI D10 M2 UP	GI D10 M2 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-8_S1_L001_UP	pool-8_S1_L001_DN
+M3	November_sequencing_GI.txt	GI_D10	GI D10 M3 UP	GI D10 M3 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-9_S2_L001_UP	pool-9_S2_L001_DN
+M4	November_sequencing_GI.txt	GI_D10	GI D10 M4 UP	GI D10 M4 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-10_S3_L001_UP	pool-10_S3_L001_DN
+M5	November_sequencing_GI.txt	GI_D10	GI D10 M5 UP	GI D10 M5 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		90	0.3	pool-11_S4_L001_UP	pool-11_S4_L001_DN
+inoculum	November_sequencing_SI.txt	SI	SI INOC UP	SI INOC DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		80	0.1		
+M1	November_sequencing_SI.txt	SI	SI M1 UP	SI M1 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		80	0.1		
+M2	November_sequencing_SI.txt	SI	SI M2 UP	SI M2 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		80	0.1		
+M3	November_sequencing_SI.txt	SI	SI M3 UP	SI M3 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		80	0.1		
+M4	November_sequencing_SI.txt	SI	SI M4 UP	SI M4 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		80	0.1		
+M5	November_sequencing_SI.txt	SI	SI M5 UP	SI M5 DN	orf19	ASSEMBLY22_ID	GENE_NAME	Plate		80	0.1		
