@@ -1,6 +1,6 @@
 # Author: Xiang Zhang
 # Contact: zhan6668@umn.edu
-# Updated on 12/28/2022
+# Updated on 09/06/2023
 
 # Step 2: After updating the metatable with the thresholds for average LFC correlation and dominating strains,
 # we proceed with this step to generate the required input format for applying moderated t-test in R
@@ -11,18 +11,22 @@ from utils import *
 
 
 if __name__ == '__main__':
-    # Set commonly used parameters
-    read_cutoff = 50
+    # Load the configuration from the JSON file
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+
+    # Access the parameters from the config dictionary
+    read_cutoff = config['read_cutoff']  # Default is 50
 
     # Set working directory
-    work_dir = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencingforseptembernoblesamples/'
+    work_dir = config['work_dir']
     os.chdir(work_dir)
 
     # Set metatable directory
-    meta_dir = 'metatable_Nov2022_all.txt'
+    meta_dir = config['meta_dir']
 
     # Set output directory
-    output_dir = 'Nov2022/'
+    output_dir = config['output_dir']
 
     # Read the metatable that guides the column names to refer to
     df_meta = pd.read_csv(meta_dir, index_col='replicate', sep='\t')
@@ -69,7 +73,8 @@ if __name__ == '__main__':
                                              m_lfc_list_up=rep_up_list_LFC, m_lfc_list_dn=rep_dn_list_LFC,
                                              lfc_rm_norm_output_direc=lfc_rm_norm_output_dir,
                                              lfc_rm_norm_mod_output_direc=lfc_rm_norm_mod_output_dir,
-                                             plate_col=plate_col, dom_thre=float(dom_cutoff), corr_thre=float(corr_cutoff))
+                                             plate_col=plate_col, dom_thre=float(dom_cutoff), corr_thre=float(corr_cutoff),
+                                             up_tag=config['up_tag'], dn_tag=config['dn_tag'])
         print("\n\n")
 
     print("Step 2 of the pipeline finished.\nTo proceed, please follow the following steps:")

@@ -1,0 +1,15 @@
+{
+    "work_dir": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencing_data_July2023/",
+    "meta_dir": "metatable_July2023.txt",
+    "output_dir": "July2023/",
+    "read_cutoff": 50,
+    "dropout_cutoff": 0,
+    "qc_plot_shape": [20, 8],
+    "up_tag": "UP",
+    "dn_tag": "DOWN",
+    "maporf19_direc": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/ORF19_Assembly22_mapping.tab.txt",
+    "descri_direc": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/C_albicans_SC5314_A22_current_chromosomal_feature.tab.txt",
+    "Scer_ortho_direc": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/C_albicans_SC5314_S_cerevisiae_orthologs.txt",
+    "summary_file_name": "Summary_mod_t_results_July2023_GELC.xlsx"
+}
+

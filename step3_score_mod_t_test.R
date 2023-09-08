@@ -1,6 +1,7 @@
 library(limma)
 library(statmod)
 library(stringi)
+library(jsonlite)
 
 get_mod_t_test_updn <- function(lfc_matrix, g2){
   design <- model.matrix(~ 0 + g2)
@@ -60,16 +61,19 @@ mod_t_test <- function(input_files, output_direc, group_type='SI', plate_col='Pl
 }
 
 
+# Read the JSON configuration file
+config <- fromJSON("config.json")
 
+# Access the parameters from the JSON object
 # Set working directory
-work_dir = "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencingforseptembernoblesamples/"
+work_dir <- config$work_dir
 setwd(work_dir)
 
 # Set metatable directory
-meta_dir = "metatable_Nov2022_all.txt"
+meta_dir <- config$meta_dir
 
 # Set output directory
-output_dir = "Nov2022/"
+output_dir <- config$output_dir
 
 # Read the metatable that guides the column names to refer to
 df_meta <- read.csv(file=meta_dir, header=TRUE, sep='\t')

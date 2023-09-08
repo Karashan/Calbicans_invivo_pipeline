@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import json
 from functools import reduce
 from statsmodels.stats.multitest import fdrcorrection
 
@@ -319,8 +320,8 @@ def plot_fraction_dropout_strains(df, rep_up_list, rep_dn_list, plates=None, pla
 
 def get_LFC_with_mask_singleInoc(df_all, name_col_list, inoc_up, inoc_dn, mouse_up_list, mouse_dn_list,
                                  plate_col='plate', plate=None, output_lfc_direc=None, mask_val=50, make_QC=True):
-    if plate != None:
-        df_all = df_all[df_all[plate_col] == plate]
+    if plate is not None:
+        df_all = df_all[df_all[plate_col].isin(plate)]
 
     # Data preparation
     inoc_list = [inoc_up, inoc_dn]
@@ -510,6 +511,8 @@ def plot_avgCorr_vs_pcc(df_top3, df_lfc, plate_list, filename, plate_col='plate'
         plt.scatter(df_top3[df_top3[plate_col] == plate]['Top3(%)'],
                     df_lfc[df_lfc[plate_col] == plate]['mean_pcc_with_others'])
     plt.legend(plate_list, loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.xlim([0, 101])
+    plt.ylim([0, 1.01])
     plt.xlabel('Sum of Top3 strains (%)')
     plt.ylabel('Average correlation between the LFC of mouse and other mice')
     plt.tight_layout()

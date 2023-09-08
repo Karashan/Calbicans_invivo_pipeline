@@ -1,6 +1,6 @@
 # Author: Xiang Zhang
 # Contact: zhan6668@umn.edu
-# Updated on 12/28/2022
+# Updated on 09/06/2023
 
 # Step 4: Generate the summary files for the output from moderated t-test in R
 # The user needs to manually set the directories for working, metatable and description files.
@@ -10,20 +10,25 @@ from utils import *
 
 
 if __name__ == '__main__':
+    # Load the configuration from the JSON file
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+
+    # Access the parameters from the config dictionary
     # Set working directory
-    work_dir = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencingforseptembernoblesamples/'
+    work_dir = config['work_dir']
     os.chdir(work_dir)
 
     # Set metatable directory
-    meta_dir = 'metatable_Nov2022_all.txt'
+    meta_dir = config['meta_dir']
 
     # Set output directory
-    output_dir = 'Nov2022/'
+    output_dir = config['output_dir']
 
     # Set description reference files:
-    maporf19_direc = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/ORF19_Assembly22_mapping.tab.txt'
-    descri_direc = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/C_albicans_SC5314_A22_current_chromosomal_feature.tab.txt'
-    Scer_ortho_direc = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/C_albicans_SC5314_S_cerevisiae_orthologs.txt'
+    maporf19_direc = config['maporf19_direc']
+    descri_direc = config['descri_direc']
+    Scer_ortho_direc = config['Scer_ortho_direc']
 
     # Read the metatable that guides the column names to refer to
     df_meta = pd.read_csv(meta_dir, index_col='replicate', sep='\t')
@@ -67,13 +72,14 @@ if __name__ == '__main__':
 
         print("\n")
 
-    result_dir = output_dir + 'Summary_mod_t_results.xlsx'
+    result_dir = output_dir + config['summary_file_name']
     print("Generating the final summary Excel file", result_dir, "...\n")
     with pd.ExcelWriter(result_dir) as writer:
         for group in groups:
             group_dir = output_dir + group + '/'
             mod_t_output_dir = group_dir + 'mod_t_output/'
             df_temp = pd.read_csv(mod_t_output_dir+group+'_results.txt', sep='\t')
+            df_temp = df_temp.sort_values(by='differential_LFC', ascending=True)
             df_temp.to_excel(writer, sheet_name=group, index=None)
 
     print("Step 4 of the pipeline finished.")

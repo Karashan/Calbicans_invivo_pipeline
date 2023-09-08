@@ -1,6 +1,6 @@
 # Author: Xiang Zhang
 # Contact: zhan6668@umn.edu
-# Updated on 03/06/2023
+# Updated on 09/06/2023
 
 # Step 1: With the raw reads and metatable as input,
 # we generate the filtered & normalized LFC files and all the QC files for each group.
@@ -9,23 +9,26 @@
 
 from utils import *
 
+
 if __name__ == '__main__':
-    # Set commonly used parameters
-    read_cutoff = 50
-    dropout_cutoff = 0
-    qc_plot_shape = (20, 8)
+    # Load the configuration from the JSON file
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+
+    # Access the parameters from the config dictionary
+    read_cutoff = config['read_cutoff']  # Default is 50
+    dropout_cutoff = config['dropout_cutoff']  # Default is 0
+    qc_plot_shape = tuple(config['qc_plot_shape'])  # Default is (20, 8)
 
     # Set working directory
-    work_dir = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencingforseptembernoblesamples/'
-    # work_dir = '/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencing_data_Jan2023/'
+    work_dir = config['work_dir']
     os.chdir(work_dir)
 
     # Set metatable directory
-    meta_dir = 'metatable_Nov2022_all.txt'
-    # meta_dir = 'metatable_Jan2023.txt'
+    meta_dir = config['meta_dir']
 
     # Set output directory
-    output_dir = 'Jan2023/'
+    output_dir = config['output_dir']
     create_directories([output_dir])
 
     # Read the metatable that guides the column names to refer to
@@ -36,11 +39,11 @@ if __name__ == '__main__':
     common_col = df_meta['common_column'].unique()[0]
     plate_col = df_meta['plate_column'].unique()[0]
     keep_col_list = [feature_col, common_col, plate_col]  # Column names to keep for some QC files
-    plate_subset_col = df_meta['plate_subset'].unique()[0]  # Can choose a subset of plates from the read table
-    if np.isnan(plate_subset_col):
-        plate_subset_col = None
-    else:
-        plate_subset_col = plate_subset_col.split(';')  # Example entry: Plate 17;Plate18;Plate19
+    # plate_subset_col = df_meta['plate_subset'].unique()[0]  # Can choose a subset of plates from the read table
+    # if pd.isnull(plate_subset_col):
+    #     plate_subset_col = None
+    # else:
+    #     plate_subset_col = plate_subset_col.split(';')  # Example entry: Plate 17;Plate18;Plate19
 
     groups = df_meta['group'].unique().tolist()
     for group in groups:
@@ -56,6 +59,14 @@ if __name__ == '__main__':
         df_group = df_meta[df_meta['group'] == group]
         input_reads_dir = df_group['dataset'].unique()[0]
         print("Reading the input raw reads file:", input_reads_dir)
+
+        # Check if a subset of plates is assigned to this group
+        plate_subset_col = df_group['plate_subset'].unique()[0]  # Can choose a subset of plates from the read table
+        if pd.isnull(plate_subset_col):
+            plate_subset_col = None
+        else:
+            plate_subset_col = plate_subset_col.split(';')  # Example entry: Plate 17;Plate18;Plate19
+
         # Read the raw reads for that group
         df_reads = pd.read_csv(input_reads_dir, index_col=orf19_col, sep='\t')
 
