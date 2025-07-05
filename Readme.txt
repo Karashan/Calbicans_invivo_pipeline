@@ -4,4 +4,4 @@ This repository shares the code for scoring the Candida albicans in vivo data (m
 
 More instructions will be updated soon.
 
-Contact: Xiang Zhang (zhan6668@umn.edu)
+Contact: Xiang Zhang (zhan6668@umn.edu; zhangab18@gmail.com)

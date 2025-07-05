@@ -1,14 +1,14 @@
 {
-    "work_dir": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/sequencing_data_Plate18_2023/",
-    "meta_dir": "metatable_Plate18_2023.txt",
-    "output_dir": "Plate18_2023/",
+    "work_dir": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/Rachel/score/",
+    "meta_dir": "metatable_GELC_P14.txt",
+    "output_dir": "GELC_P14_2025/",
     "read_cutoff": 50,
     "dropout_cutoff": 0,
     "qc_plot_shape": [20, 8],
     "up_tag": "UP",
-    "dn_tag": "DN",
+    "dn_tag": "DOWN",
     "maporf19_direc": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/ORF19_Assembly22_mapping.tab.txt",
     "descri_direc": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/C_albicans_SC5314_A22_current_chromosomal_feature.tab.txt",
     "Scer_ortho_direc": "/Users/zhangxiang/Documents/Research_CB/GeneEssentiality_CandidaAlbicans/barcode_seq/map_gene/C_albicans_SC5314_S_cerevisiae_orthologs.txt",
-    "summary_file_name": "Summary_mod_t_results_GRACE_Plate18_2023.xlsx"
+    "summary_file_name": "Summary_mod_t_results_GELC_P14_2025.xlsx"
 }
